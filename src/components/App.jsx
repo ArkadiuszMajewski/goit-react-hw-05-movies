@@ -1,5 +1,5 @@
 // import { lazy } from 'react';
-import { NavLink, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import ComponentLayout from './componentLayout/ComponentLayout';
 // import MovieDetails from './movieDetails/MovieDetails';
 import css from './App.module.css';
