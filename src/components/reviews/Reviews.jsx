@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
-import './Reviews.css';
+import { useParams, Link, Outlet } from 'react-router-dom';
+import css from './Reviews.module.css';
 import { MovieDetails } from 'components/movieDetails/MovieDetails';
 
 const Reviews = () => {
@@ -10,9 +10,9 @@ const Reviews = () => {
   useEffect(() => {
     const fetchMovieReviews = async () => {
       try {
-        const apiKey = '1f189cc65d8faa305307626e5a4d4071';
+        const key = '0127585737a1692bc4e9c9e0b9997760';
         const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${apiKey}`
+          `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${key}`
         );
         const data = await response.json();
         setReviews(data.results);
@@ -25,11 +25,10 @@ const Reviews = () => {
   }, [movieId]);
 
   return (
-    <div className={`reviews-container `}>
-      <Link to={`/movies/${movieId}`} className="btn">
+    <div className={css.reviewsContainer}>
+      <Link to={`/movies/${movieId}`} className={css.button}>
         Back to Movie Details
       </Link>
-      <MovieDetails />
 
       <h2>Reviews</h2>
       <ul className="reviews-list">
@@ -40,6 +39,7 @@ const Reviews = () => {
           </li>
         ))}
       </ul>
+      <Outlet />
     </div>
   );
 };

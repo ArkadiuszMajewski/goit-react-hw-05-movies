@@ -25,30 +25,56 @@ export const MovieDetails = () => {
     fetchMovieDetails();
   }, [movieId]);
 
+  // console.log(movieDetails.genres);
+  // if (movieDetails) {
+  //   const gen = movieDetails.genres;
+
+  //   const genre = gen.map(g => g.name);
+  //   console.log(genre);
+  //   return genre;
+  // }
+  // console.log(genre);
   return (
-    <div className={css.movieContainer}>
+    <div>
       {movieDetails ? (
-        <div>
-          <h2 className={css.movieTitle}>{movieDetails.title}</h2>
+        <div className={css.movieContainer}>
           <img
             className={css.movieImage}
             src={imageUrl + movieDetails.poster_path}
             alt={movieDetails.title}
           />
-          <p className={css.movieOverview}>{movieDetails.overview}</p>
-
-          <Link to={`/movies/${movieId}/cast`} className={css.link}>
-            Cast
-          </Link>
-          <Link to={`/movies/${movieId}/reviews`} className={css.link}>
-            Reviews
-          </Link>
+          <div>
+            <h2 className={css.movieTitle}>Title: {movieDetails.title}</h2>
+            <h2>Overview</h2>
+            <p className={css.movieOverview}>{movieDetails.overview}</p>
+            <h2>Genres</h2>
+            <p>
+              {movieDetails.genres.map(g => (
+                <span> {g.name} </span>
+              ))}{' '}
+            </p>
+          </div>
         </div>
       ) : (
-        <Suspense fallback={<div>Loading page...</div>}>
-          <Outlet />
-        </Suspense>
+        <Suspense fallback={<div>Loading page...</div>}></Suspense>
       )}
+      <Link to={`/movies/${movieId}/cast`} className={css.link}>
+        Cast
+      </Link>
+      <Link to={`/movies/${movieId}/reviews`} className={css.link}>
+        Reviews
+      </Link>
+      <Outlet />
     </div>
   );
 };
+
+// return (
+//   <ul>
+//     {trending.map(movie => (
+//       <li key={movie.id}>
+//         <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+//       </li>
+//     ))}
+//   </ul>
+// );

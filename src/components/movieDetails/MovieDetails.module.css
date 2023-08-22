@@ -1,5 +1,6 @@
 .movieContainer {
   padding: 20px;
+  display: flex;
 }
 
 .movieTitle {
@@ -12,7 +13,7 @@
   width: 200px;
   height: 300px;
   object-fit: cover;
-  margin-bottom: 10px;
+  margin: 30px;
 }
 
 .movieOverview {

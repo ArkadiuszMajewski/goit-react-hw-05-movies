@@ -1,6 +1,6 @@
 // import { lazy } from 'react';
 import { NavLink, Route, Routes } from 'react-router-dom';
-import { CommonLayout } from './componentLayout/ComponentLayout';
+import { Home } from './componentLayout/ComponentLayout';
 import { MovieDetails } from './movieDetails/MovieDetails';
 import css from './App.module.css';
 import Cast from './cast/Cast';
@@ -23,12 +23,13 @@ export const App = () => {
       </nav>
 
       <Routes>
-        <Route path="/" element={<CommonLayout />} />
+        <Route path="/" element={<Home />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:movieId" element={<MovieDetails />} />
-        <Route path="/movies/:movieId/cast" element={<Cast />} />
-        <Route path="/movies/:movieId/reviews" element={<Reviews />} />
-        <Route path="*" element={<CommonLayout />} />
+        <Route path="/movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
+        <Route path="*" element={<Home />} />
       </Routes>
     </div>
   );
