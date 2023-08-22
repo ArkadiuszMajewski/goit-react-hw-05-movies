@@ -34,3 +34,7 @@
 .button:hover:hover {
   box-shadow: 0 0 5px #000000;
 }
+.loading {
+  font-size: 40px;
+  margin: auto;
+}

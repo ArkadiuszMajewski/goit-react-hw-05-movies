@@ -47,6 +47,9 @@ export const Cast = () => {
             ))}
           </ul>
         </div>
+        <Suspense fallback={<div>LOADING...</div>}>
+          <Outlet />
+        </Suspense>
       </div>
 
       <Outlet />

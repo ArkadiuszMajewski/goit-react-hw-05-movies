@@ -58,7 +58,8 @@
 .title {
   color: black;
 }
+
 .loading {
-  font-size: 40px;
-  color: black;
+  font-size: 70px;
+  color: blue;
 }

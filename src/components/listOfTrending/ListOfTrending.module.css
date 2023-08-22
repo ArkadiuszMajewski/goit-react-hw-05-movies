@@ -9,3 +9,7 @@
 .line a {
   color: black;
 }
+.loading {
+  font-size: 70px;
+  margin: auto;
+}

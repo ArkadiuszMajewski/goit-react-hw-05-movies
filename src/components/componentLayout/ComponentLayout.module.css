@@ -26,3 +26,7 @@
 a {
   text-decoration: none;
 }
+.loading {
+  font-size: 70px;
+  color: blue;
+}

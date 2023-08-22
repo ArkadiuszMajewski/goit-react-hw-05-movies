@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { getTrending } from '../api/api';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import css from './ListOfTrending.module.css';
 
 export const ListOfTrending = () => {
@@ -18,12 +18,19 @@ export const ListOfTrending = () => {
   }, []);
 
   return (
-    <ul className={css.list}>
-      {trending.map(movie => (
-        <li key={movie.id} className={css.line}>
-          <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-        </li>
-      ))}
-    </ul>
+    <div>
+      <h1 style={{ padding: 10 }}>Trending today</h1>
+
+      <ul className={css.list}>
+        {trending.map(movie => (
+          <li key={movie.id} className={css.line}>
+            <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
+          </li>
+        ))}
+      </ul>
+      <Suspense fallback={<div className={css.loading}>LOADING...</div>}>
+        <Outlet />
+      </Suspense>
+    </div>
   );
 };

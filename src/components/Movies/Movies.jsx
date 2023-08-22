@@ -55,9 +55,9 @@ const Movies = () => {
           </li>
         ))}
       </ul>
-      {/* <Suspense fallback={<div>Loading page...</div>}> */}
-      <Outlet />
-      {/* </Suspense> */}
+      <Suspense fallback={<div className={css.loading}>Loading page...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };

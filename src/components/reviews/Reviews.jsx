@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import css from './Reviews.module.css';
 
@@ -38,7 +38,9 @@ const Reviews = () => {
           </li>
         ))}
       </ul>
-      <Outlet />
+      <Suspense fallback={<div className={css.loading}>LOADING...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
