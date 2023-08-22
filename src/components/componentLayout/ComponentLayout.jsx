@@ -1,7 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import css from './ComponentLayout.module.css';
 
-import { ListOfTrending } from 'components/listOfTrending/ListOfTrending';
 import { Suspense } from 'react';
 
 const ComponentLayout = () => {
