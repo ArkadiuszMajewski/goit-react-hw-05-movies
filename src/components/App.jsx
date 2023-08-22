@@ -17,13 +17,14 @@ export const App = () => {
     <div className={css.container}>
       <Routes>
         <Route path="/" element={<ComponentLayout />}>
-          <Route path="/" element={<ListOfTrending />} />
+          <Route index element={<ListOfTrending />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/movies/:movieId" element={<MovieDetails />}>
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="*" element={<ComponentLayout />} />
+          {/* <Route path="*" element={<Home />} /> */}
+          <Route path="*" element={<ListOfTrending />} />
         </Route>
       </Routes>
     </div>
