@@ -1,0 +1,28 @@
+.container {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+.nav {
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 3px solid rgb(100, 100, 100, 30%);
+  padding: 10px;
+  display: flex;
+  gap: 20px;
+}
+.link {
+  padding: 8px 16px;
+  text-decoration: none;
+  font-weight: 500;
+}
+.active {
+  composes: link;
+  color: rgb(152, 24, 24);
+  border: none;
+}
+.link:hover {
+  text-decoration: underline 3px;
+}
+a {
+  text-decoration: none;
+}
