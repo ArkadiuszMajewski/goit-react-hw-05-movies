@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-// import './Movies.css';
+import { Suspense, useState } from 'react';
+import { Link, Outlet } from 'react-router-dom';
+import css from './Movies.module.css';
 
 const Movies = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
@@ -23,7 +23,7 @@ const Movies = () => {
     }
   };
 
-  const truncateTitle = (title, maxLength) => {
+  const length = (title, maxLength) => {
     if (title.length > maxLength) {
       return title.slice(0, maxLength) + '...';
     }
@@ -31,9 +31,8 @@ const Movies = () => {
   };
 
   return (
-    <div className={`movies-container Back to Movie Details`}>
+    <div className={css.container}>
       <h2>Search Movies</h2>
-
       <input
         type="text"
         placeholder="Enter search keyword"
@@ -42,22 +41,23 @@ const Movies = () => {
       />
       <button onClick={handleSearch}>Search</button>
 
-      <ul className="movies-list">
+      <ul className={css.list}>
         {searchResults.map(movie => (
           <li key={movie.id}>
-            <Link className="movie-items" to={`/movies/${movie.id}`}>
+            <Link className={css.items} to={`/movies/${movie.id}`}>
               <img
                 src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
                 alt={movie.title}
-                className="movie-thumbnail"
+                className={css.thumbnail}
               />
-              <span className="movies-title">
-                {truncateTitle(movie.title, 12)}
-              </span>
+              <span className={css.title}>{length(movie.title, 20)}</span>
             </Link>
           </li>
         ))}
       </ul>
+      {/* <Suspense fallback={<div>Loading page...</div>}> */}
+      <Outlet />
+      {/* </Suspense> */}
     </div>
   );
 };

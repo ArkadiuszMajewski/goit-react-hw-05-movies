@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 const imageUrl = 'https://image.tmdb.org/t/p/w500';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
 
@@ -25,15 +25,6 @@ export const MovieDetails = () => {
     fetchMovieDetails();
   }, [movieId]);
 
-  // console.log(movieDetails.genres);
-  // if (movieDetails) {
-  //   const gen = movieDetails.genres;
-
-  //   const genre = gen.map(g => g.name);
-  //   console.log(genre);
-  //   return genre;
-  // }
-  // console.log(genre);
   return (
     <div>
       {movieDetails ? (
@@ -64,17 +55,10 @@ export const MovieDetails = () => {
       <Link to={`/movies/${movieId}/reviews`} className={css.link}>
         Reviews
       </Link>
-      <Outlet />
+      <Suspense fallback={<div className={css.loading}>LOADING...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
-
-// return (
-//   <ul>
-//     {trending.map(movie => (
-//       <li key={movie.id}>
-//         <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
-//       </li>
-//     ))}
-//   </ul>
-// );
+export default MovieDetails;

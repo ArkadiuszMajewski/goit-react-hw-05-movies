@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getTrending } from '../api/api';
 import { Link } from 'react-router-dom';
+import css from './ListOfTrending.module.css';
 
 export const ListOfTrending = () => {
   //   console.log(trending);
@@ -17,9 +18,9 @@ export const ListOfTrending = () => {
   }, []);
 
   return (
-    <ul>
+    <ul className={css.list}>
       {trending.map(movie => (
-        <li key={movie.id}>
+        <li key={movie.id} className={css.line}>
           <Link to={`/movies/${movie.id}`}>{movie.title}</Link>
         </li>
       ))}

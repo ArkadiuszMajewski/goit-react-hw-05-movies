@@ -1,5 +1,4 @@
-import { MovieDetails } from 'components/movieDetails/MovieDetails';
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import css from './Cast.module.css';
 
@@ -49,6 +48,7 @@ export const Cast = () => {
           </ul>
         </div>
       </div>
+
       <Outlet />
     </div>
   );

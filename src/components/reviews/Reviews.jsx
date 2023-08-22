@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import css from './Reviews.module.css';
-import { MovieDetails } from 'components/movieDetails/MovieDetails';
 
 const Reviews = () => {
   const { movieId } = useParams();
@@ -31,7 +30,7 @@ const Reviews = () => {
       </Link>
 
       <h2>Reviews</h2>
-      <ul className="reviews-list">
+      <ul className={css.reviewsList}>
         {reviews.map(review => (
           <li key={review.id}>
             <p>{review.author}</p>

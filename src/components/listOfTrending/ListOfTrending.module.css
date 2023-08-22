@@ -1,0 +1,11 @@
+.list {
+  list-style: none;
+  font-weight: 500;
+  font-size: 20px;
+}
+.line a:hover {
+  color: rgb(188, 22, 22);
+}
+.line a {
+  color: black;
+}

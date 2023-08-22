@@ -1,8 +1,8 @@
-// import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import css from './ComponentLayout.module.css';
 
 import { ListOfTrending } from 'components/listOfTrending/ListOfTrending';
+import { Suspense } from 'react';
 
 export const Home = () => {
   return (
@@ -11,7 +11,9 @@ export const Home = () => {
         <h1 style={{ padding: 10 }}>Trending today</h1>
         <ListOfTrending />
       </div>
-      <Outlet />
+      <Suspense fallback={<div>LOADING...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
