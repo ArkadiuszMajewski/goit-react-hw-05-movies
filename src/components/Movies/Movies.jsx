@@ -6,8 +6,8 @@ const Movies = () => {
   const [searchKeyword, setSearchKeyword] = useState('');
   const [searchResults, setSearchResults] = useState([]);
 
-  const handleSearchInputChange = event => {
-    setSearchKeyword(event.target.value);
+  const handleSearchInputChange = e => {
+    setSearchKeyword(e.target.value);
   };
 
   const handleSearch = async () => {
