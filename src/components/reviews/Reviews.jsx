@@ -23,17 +23,19 @@ const Reviews = () => {
     fetchMovieReviews();
   }, [movieId]);
 
+  console.log(reviews);
   return (
     <div className={css.reviewsContainer}>
       <Link to={`/movies/${movieId}`} className={css.button}>
         Back to Movie Details
       </Link>
 
-      <h2>Reviews</h2>
+      {reviews.length > 0 ? <h2>Reviews</h2> : <h2>No movie review</h2>}
       <ul className={css.reviewsList}>
         {reviews.map(review => (
           <li key={review.id}>
             <p>{review.author}</p>
+            --------------------------------------
             <p>{review.content}</p>
           </li>
         ))}
